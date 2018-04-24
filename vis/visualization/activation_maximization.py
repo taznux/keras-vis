@@ -44,6 +44,7 @@ def visualize_activation_with_losses(input_tensor, losses, wrt_tensor=None,
 
     # If range has integer numbers, cast to 'uint8'
     if isinstance(input_range[0], int) and isinstance(input_range[1], int):
+        img = utils.deprocess_input(img, input_range)
         img = np.clip(img, input_range[0], input_range[1]).astype('uint8')
 
     if K.image_data_format() == 'channels_first':
